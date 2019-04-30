@@ -10,6 +10,11 @@ namespace LinkedListImplementation
         private Node<T> head;
         private Node<T> tail;
 
+        public LinkedList(T value)
+        {
+            this.head = new Node<T>(value);
+        }
+
         public int Count { get; private set; }
 
         public void AddFirst(T item)
@@ -29,14 +34,20 @@ namespace LinkedListImplementation
 
         public void AddLast(T item)
         {
-            Node<T> oldTail = this.tail;
-
-            this.tail = new Node<T>(item);
-            oldTail.Next = this.tail;
-
-            if (Count == 0)
+            if (head != null)
             {
-                this.head = tail;
+                var currentHead = head;
+
+                while (currentHead.Next != null)
+                {
+                    currentHead = currentHead.Next;
+                }
+
+                currentHead.Next = new Node<T>(item);
+            }
+            else
+            {
+                head = new Node<T>(item);
             }
 
             this.Count++;
@@ -73,23 +84,33 @@ namespace LinkedListImplementation
             }
             else
             {
-                Node<T> newTail = this.GetSecondToLast();
-                newTail.Next = null;
-                this.tail = newTail;
+                var currentHead = head;
+                var secondToLast = head;
+
+                while (currentHead.Next != null)
+                {
+                    secondToLast = currentHead;
+                    currentHead = currentHead.Next;
+                }
+
+                secondToLast.Next = null;
+
                 this.Count--;
             }
         }
 
-        private Node<T> GetSecondToLast()
+        public void PrintNodes()
         {
-            Node<T> current = this.head;
-
-            while (current.Next != this.tail)
+            if (head != null)
             {
-                current = current.Next;
-            }
+                var currentHead = head;
 
-            return current;
+                while (currentHead.Next != null)
+                {
+                    Console.WriteLine(currentHead.Value);
+                    currentHead = currentHead.Next;
+                }
+            }
         }
     }
 }
