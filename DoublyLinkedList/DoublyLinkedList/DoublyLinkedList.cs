@@ -13,6 +13,12 @@ namespace DoublyLinkedList
             this.head = null;
         }
 
+        public DoublyLinkedList(T value)
+        {
+            this.head = new Node<T>(value);
+            Count++;
+        }
+
         public int Count { get; private set; }
 
         public void AddFirst(T value)

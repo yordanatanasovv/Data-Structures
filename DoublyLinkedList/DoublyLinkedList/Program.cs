@@ -6,6 +6,7 @@ namespace DoublyLinkedList
     {
         static void Main(string[] args)
         {
+
             DoublyLinkedList<int> myList = new DoublyLinkedList<int>();
 
             for (int i = 0; i < 5; i++)
@@ -13,19 +14,20 @@ namespace DoublyLinkedList
                 myList.AddFirst(i);
             }
 
-            Console.WriteLine("printing nodes");
+            Console.WriteLine("Printing nodes");
             myList.PrintNodes();
             Console.WriteLine($"Count - {myList.Count}");
 
-            Console.WriteLine("Remove last element: ");
-            myList.RemoveLast(); 
-            myList.PrintNodes();
-            Console.WriteLine($"Count - {myList.Count}");
-
-            Console.WriteLine("Remove first element: ");
+            Console.WriteLine("Removing first element");
             myList.RemoveFirst();
             myList.PrintNodes();
             Console.WriteLine($"Count - {myList.Count}");
+
+            Console.WriteLine("Removing last element");
+            myList.RemoveLast();
+            myList.PrintNodes();
+            Console.WriteLine($"Count - {myList.Count}");
+
         }
     }
 }
