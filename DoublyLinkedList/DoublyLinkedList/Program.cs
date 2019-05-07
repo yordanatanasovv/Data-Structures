@@ -28,6 +28,12 @@ namespace DoublyLinkedList
             myList.PrintNodes();
             Console.WriteLine($"Count - {myList.Count}");
 
+            Console.WriteLine("Reversing...");
+            DoublyLinkedList<int> reversed = myList.Reverse();
+            reversed.PrintNodes();
+            
+            
+
         }
     }
 }

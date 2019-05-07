@@ -122,5 +122,35 @@ namespace DoublyLinkedList
                 Console.WriteLine(currentElement.Value);
             }
         }
+
+        public DoublyLinkedList<T> Reverse()
+        {
+            DoublyLinkedList<T> reversed = new DoublyLinkedList<T>();
+
+            if (Count == 0)
+            {
+                throw new Exception("List is empty.");
+            }
+            else
+            {
+                Node<T> current = head;
+
+                while (current.Next != null)
+                {
+                    current = current.Next;
+                }
+
+                Node<T> lastElement = current;
+                reversed.AddFirst(lastElement.Value);
+
+                while (lastElement.Previous != null)
+                {
+                    lastElement = lastElement.Previous;
+                    reversed.AddLast(lastElement.Value);
+                }
+
+                return reversed;
+            }
+        }
     }
 }

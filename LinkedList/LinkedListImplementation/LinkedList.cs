@@ -10,6 +10,11 @@ namespace LinkedListImplementation
         private Node<T> head;
         private Node<T> tail;
 
+        public LinkedList()
+        {
+            this.head = null;
+        }
+
         public LinkedList(T value)
         {
             this.head = new Node<T>(value);
@@ -110,7 +115,40 @@ namespace LinkedListImplementation
                     Console.WriteLine(currentHead.Value);
                     currentHead = currentHead.Next;
                 }
+
+                Console.WriteLine(currentHead.Value);
             }
+        }
+
+        public LinkedList<T> Reverse()
+        {
+            LinkedList<T> reversed = new LinkedList<T>();
+
+            if (this.Count == 0)
+            {
+                return reversed;
+            }
+            else
+            {
+                Node<T> current = head;
+
+                List<T> elements = new List<T>();
+                elements.Add(current.Value);
+
+                while (current.Next != null)
+                {
+                    current = current.Next;
+                    elements.Add(current.Value);
+                }
+
+                for (int i = elements.Count - 1; i >= 0; i--)
+                {
+                    reversed.AddLast(elements[i]);
+                }
+
+                return reversed;
+            }
+            
         }
     }
 }
